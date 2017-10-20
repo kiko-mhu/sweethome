@@ -2,8 +2,8 @@
 from collections import OrderedDict
 import codecs
 
-#ËùÓĞÎÄ¼şÈ·±£ÊÇutf-8±àÂë£¬Èç¹û²»ÊÇ£¬Çë×ªÂë¡£
-ipath = "¾ø´úË«½¿.txt"
+#æ‰€æœ‰æ–‡ä»¶ç¡®ä¿æ˜¯utf-8ç¼–ç ï¼Œå¦‚æœä¸æ˜¯ï¼Œè¯·è½¬ç ã€‚
+ipath = "ç»ä»£åŒå¨‡.txt"
 with codecs.open(ipath,'r','UTF-8') as file_object:
 	contents = file_object.read()
 
@@ -11,7 +11,8 @@ dictc= {}
 dictc_copy={}
 dictc_sorted=OrderedDict()
 for c in contents:
-	if c == '¡­' or c == "¡¯" or c == "¡®" or c == '£º' or c == '£¬' or c == '¡£' or c == '£¡' or c == '£¿' or c == ' ' or c == '¡¢' or c == '\r' or c == '\n' or c == '£¨' or c == '£©' or c == '¡¶' or c == '¡·' or c == '¡°' or c == '¡±':
+	#æš‚æ—¶æ€§çš„æ‰‹åŠ¨å»æ‰è¿™äº›æ ‡ç‚¹ç¬¦å·
+	if c == 'â€¦' or c == "â€™" or c == "â€˜" or c == 'ï¼š' or c == 'ï¼Œ' or c == 'ã€‚' or c == 'ï¼' or c == 'ï¼Ÿ' or c == ' ' or c == 'ã€' or c == '\r' or c == '\n' or c == 'ï¼ˆ' or c == 'ï¼‰' or c == 'ã€Š' or c == 'ã€‹' or c == 'â€œ' or c == 'â€':
 		continue
 	exist = False
 	for cc in dictc.keys():
@@ -20,7 +21,6 @@ for c in contents:
 			exist = True
 			break
 	if exist != True:
-		#ÔİÊ±ĞÔµÄÊÖ¶¯È¥µôÕâĞ©±êµã·ûºÅ
 			dictc[c]=1
 
 for key2 , value2 in dictc.items():
@@ -38,8 +38,8 @@ while dictc_copy:
 	del dictc_copy[max_key]
 	max_value = 0
 
-with codecs.open('¾ø´úË«½¿_·ÖÎö½á¹û.txt','w','UTF-8') as file_object:
+with codecs.open('ç»ä»£åŒå¨‡_åˆ†æç»“æœ.txt','w','UTF-8') as file_object:
 	for key , value in dictc_sorted.items():
 		file_object.write("key : "+key+"    value : "+ str(value)+"\n")
 
-print( ipath + "·ÖÎöÍê±Ï£¡")
+print( ipath + "åˆ†æå®Œæ¯•ï¼")
